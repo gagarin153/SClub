@@ -10,12 +10,7 @@ class RegistrationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password",
-                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
-        loginTextField.attributedPlaceholder = NSAttributedString(string: "Email",
-                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
-        passwordTextField.autocorrectionType = .yes
-        loginTextField.autocorrectionType = .yes
+        setAttribute()
     }
     
     @IBAction func pressSignUP(_ sender: UIButton) {
@@ -28,11 +23,16 @@ class RegistrationViewController: UIViewController {
                 let alert = UIAlertController(title: "Error", message: loginErrorText, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
-                           }else{
+            }else{
                 self.dismiss(animated: true, completion: nil)
             }
         }
     }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        Keyboard.hide(for: loginTextField, passwordTextField )
+    }
+    
     
     func isValid(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
@@ -40,4 +40,12 @@ class RegistrationViewController: UIViewController {
         return emailPred.evaluate(with: email)
     }
     
+    func setAttribute() {
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password",
+                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        loginTextField.attributedPlaceholder = NSAttributedString(string: "Email",
+                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        //               passwordTextField.autocorrectionType = .yes
+        //               loginTextField.autocorrectionType = .yes
+    }
 }
