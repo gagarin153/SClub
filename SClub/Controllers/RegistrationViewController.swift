@@ -7,13 +7,21 @@ class RegistrationViewController: UIViewController {
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    var delegate: DataDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setAttribute()
+        
     }
     
     @IBAction func pressSignUP(_ sender: UIButton) {
+            
+        
+        
+        
+        guard let email = loginTextField.text, let password = passwordTextField.text, email != "", password != ""
+        else { return }
         
         var loginErrorText = isValid(loginTextField.text ?? "") ? "" : "The email address is badly formatted."
         
@@ -24,11 +32,16 @@ class RegistrationViewController: UIViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }else{
+                result?.user.sendEmailVerification(completion: nil)
+                self.delegate?.printPricol(string: "Before entering you need to confirm your mail. We sent an email on \(self.loginTextField.text ?? "")")
+                
                 self.dismiss(animated: true, completion: nil)
             }
         }
     }
     
+   
+  
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         Keyboard.hide(for: loginTextField, passwordTextField )
     }
@@ -40,12 +53,12 @@ class RegistrationViewController: UIViewController {
         return emailPred.evaluate(with: email)
     }
     
+    
     func setAttribute() {
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password",
                                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         loginTextField.attributedPlaceholder = NSAttributedString(string: "Email",
                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
-        //               passwordTextField.autocorrectionType = .yes
-        //               loginTextField.autocorrectionType = .yes
+       
     }
 }
