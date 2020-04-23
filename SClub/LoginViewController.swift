@@ -19,6 +19,8 @@ class LoginViewController: UIViewController {
                                                             attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password",
         attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        loginTextField.autocorrectionType = .yes
+        passwordTextField.autocorrectionType = .yes
 
     }
     

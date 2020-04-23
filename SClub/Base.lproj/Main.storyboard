@@ -62,6 +62,9 @@
                                         <integer key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="VJZ-xE-s88" kind="show" id="HGT-nC-iiX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7DU-1D-INb">
                                 <rect key="frame" x="74" y="359" width="266" height="38"/>
@@ -93,8 +96,8 @@
                             <constraint firstAttribute="trailingMargin" secondItem="6Qn-SZ-mh0" secondAttribute="trailing" constant="54" id="haT-3E-CsY"/>
                             <constraint firstItem="jq7-P3-Pli" firstAttribute="leading" secondItem="gZG-Oj-auf" secondAttribute="leadingMargin" constant="54" id="pmK-sN-f3G"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3TO-le-BBO" secondAttribute="trailing" constant="54" id="voc-7z-hhQ"/>
+                            <constraint firstItem="3TO-le-BBO" firstAttribute="top" secondItem="u4J-yi-ExR" secondAttribute="bottom" constant="227" id="w1G-36-Osq"/>
                             <constraint firstItem="6Qn-SZ-mh0" firstAttribute="leading" secondItem="gZG-Oj-auf" secondAttribute="leadingMargin" constant="54" id="xYS-tA-MCD"/>
-                            <constraint firstItem="3TO-le-BBO" firstAttribute="top" secondItem="u4J-yi-ExR" secondAttribute="bottom" constant="227" id="ywE-mS-UdI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qG3-oi-UQl"/>
                     </view>
@@ -106,6 +109,81 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wup-NR-I1x" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-752.17391304347836" y="143.97321428571428"/>
+        </scene>
+        <!--Registration View Controller-->
+        <scene sceneID="uSo-Tp-0i6">
+            <objects>
+                <viewController id="VJZ-xE-s88" customClass="RegistrationViewController" customModule="SClub" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Ad-La-gwc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vsi-BG-1VR">
+                                <rect key="frame" x="74" y="210" width="266" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="VeH-6F-ZxG"/>
+                                </constraints>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oTQ-2q-Mqx">
+                                <rect key="frame" x="74" y="248" width="266" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="U6v-0K-pYt"/>
+                                </constraints>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CUx-63-WvX">
+                                <rect key="frame" x="74" y="298" width="266" height="38"/>
+                                <color key="backgroundColor" red="0.99160850050000005" green="0.58425903320000006" blue="0.42443481090000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="kGx-el-xZe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                <state key="normal" title="Sign up">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="pressSignUP:" destination="VJZ-xE-s88" eventType="touchUpInside" id="wuK-9E-eBe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.2732250094" green="0.65450769659999997" blue="0.48615950349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="vsi-BG-1VR" firstAttribute="trailing" secondItem="oTQ-2q-Mqx" secondAttribute="trailing" id="106-hD-K9u"/>
+                            <constraint firstItem="CUx-63-WvX" firstAttribute="top" secondItem="oTQ-2q-Mqx" secondAttribute="bottom" constant="20" id="4hg-sL-CZJ"/>
+                            <constraint firstItem="oTQ-2q-Mqx" firstAttribute="trailing" secondItem="CUx-63-WvX" secondAttribute="trailing" id="4xY-0j-EiN"/>
+                            <constraint firstItem="oTQ-2q-Mqx" firstAttribute="top" secondItem="vsi-BG-1VR" secondAttribute="bottom" constant="8" id="Fdy-4I-JBE"/>
+                            <constraint firstItem="vsi-BG-1VR" firstAttribute="leading" secondItem="oTQ-2q-Mqx" secondAttribute="leading" id="I68-tA-LRS"/>
+                            <constraint firstItem="vsi-BG-1VR" firstAttribute="top" secondItem="Mzl-Jm-8xT" secondAttribute="top" constant="210" id="O9K-9i-Hq6"/>
+                            <constraint firstItem="vsi-BG-1VR" firstAttribute="leading" secondItem="Mzl-Jm-8xT" secondAttribute="leading" constant="74" id="lmv-D1-Bvj"/>
+                            <constraint firstItem="oTQ-2q-Mqx" firstAttribute="leading" secondItem="CUx-63-WvX" secondAttribute="leading" id="mF8-2X-bFf"/>
+                            <constraint firstItem="vsi-BG-1VR" firstAttribute="centerX" secondItem="3Ad-La-gwc" secondAttribute="centerX" id="xSW-Fg-WfK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Mzl-Jm-8xT"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Axq-P4-ha7"/>
+                    <connections>
+                        <outlet property="loginTextField" destination="vsi-BG-1VR" id="e7p-Lu-WeB"/>
+                        <outlet property="passwordTextField" destination="oTQ-2q-Mqx" id="pzd-5W-kGy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i12-Xb-YWZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="126" y="146"/>
         </scene>
     </scenes>
 </document>
