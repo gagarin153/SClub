@@ -1,4 +1,5 @@
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController, DataDelegate {
     
@@ -12,6 +13,23 @@ class LoginViewController: UIViewController, DataDelegate {
         setAttribute()
     }
     
+    @IBAction func loginButtonTapped(_ sender: Any) {
+        guard let email = loginTextField.text, let password = passwordTextField.text, email != "", password != ""
+            else { return }
+        let auth = Auth.auth()
+        auth.signIn(withEmail: email, password: password) { [weak self] authResult, error in
+            if let error = error {
+                self?.showAlert(with: error.localizedDescription)
+            } else {
+                if auth.currentUser?.isEmailVerified == true {
+                    self?.performSegue(withIdentifier: "login", sender: nil)
+                } else {
+                    self?.showAlert(with: "Please confirm your email address first")
+                }
+            }
+            
+        }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "registration" {
@@ -36,8 +54,14 @@ class LoginViewController: UIViewController, DataDelegate {
         Keyboard.hide(for: loginTextField, passwordTextField )
     }
     
-    func printPricol(string: String) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
+    func showAlert(with message: String ) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func warnAboutConfirmEmail(string: String) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [unowned self] in
             let alert = UIAlertController(title: "Alert", message: string, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2F3C1D3B2452F4360077C24F /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3C1D3A2452F4360077C24F /* Validation.swift */; };
 		2F3C1D4B2452FF140077C24F /* ValidationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3C1D4A2452FF140077C24F /* ValidationTest.swift */; };
+		2F3C1D4D24531DEF0077C24F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3C1D4C24531DEF0077C24F /* ProfileViewController.swift */; };
 		2F50CC1524507A310037FD47 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F50CC1424507A310037FD47 /* GoogleService-Info.plist */; };
 		2F50CC172450BEFC0037FD47 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F50CC162450BEFC0037FD47 /* RegistrationViewController.swift */; };
 		2F8836822451C8D700EF8683 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8836812451C8D700EF8683 /* Keyboard.swift */; };
@@ -39,6 +40,7 @@
 		2F3C1D402452FEAD0077C24F /* SClubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SClubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F3C1D442452FEAD0077C24F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F3C1D4A2452FF140077C24F /* ValidationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationTest.swift; sourceTree = "<group>"; };
+		2F3C1D4C24531DEF0077C24F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2F50CC1424507A310037FD47 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F50CC162450BEFC0037FD47 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		2F8836812451C8D700EF8683 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				2F9F482F244DDCA4004AC276 /* LoginViewController.swift */,
 				2F50CC162450BEFC0037FD47 /* RegistrationViewController.swift */,
+				2F3C1D4C24531DEF0077C24F /* ProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				2F9F481A244DD6F9004AC276 /* AppDelegate.swift in Sources */,
 				2F50CC172450BEFC0037FD47 /* RegistrationViewController.swift in Sources */,
 				2F9F481C244DD6F9004AC276 /* SceneDelegate.swift in Sources */,
+				2F3C1D4D24531DEF0077C24F /* ProfileViewController.swift in Sources */,
 				2F3C1D3B2452F4360077C24F /* Validation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

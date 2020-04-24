@@ -82,6 +82,9 @@
                                         <integer key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginButtonTapped:" destination="3UM-nB-EKl" eventType="touchUpInside" id="6Om-jB-eHp"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.29204627869999999" green="0.65247046949999998" blue="0.49190118910000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -105,11 +108,62 @@
                         <outlet property="loginTextField" destination="3TO-le-BBO" id="sOQ-QE-rge"/>
                         <outlet property="passwordTextField" destination="jq7-P3-Pli" id="t7o-XD-d7I"/>
                         <outlet property="signUpButton" destination="6Qn-SZ-mh0" id="WIG-bd-6QB"/>
+                        <segue destination="be5-UR-4nJ" kind="presentation" identifier="login" modalPresentationStyle="fullScreen" id="YTi-O4-mfp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wup-NR-I1x" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-752.17391304347836" y="143.97321428571428"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="13y-Le-FVL">
+            <objects>
+                <viewController id="be5-UR-4nJ" customClass="ProfileViewController" customModule="SClub" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IKK-TX-Hei">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdy-U8-WE7">
+                                <rect key="frame" x="145" y="578" width="124" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.58440375330000005" blue="0.40399605039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Sign Out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="signOutButtonTapped:" destination="be5-UR-4nJ" eventType="touchUpInside" id="Mni-Bg-shI"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRF-7Z-axn">
+                                <rect key="frame" x="83" y="251" width="248" height="92"/>
+                                <color key="backgroundColor" red="1" green="0.58440375330000005" blue="0.40399605039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="92" id="YYc-1I-Fb7"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="247" id="iIU-xj-HQs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.2555888295" green="0.65856236219999997" blue="0.4819603562" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cRF-7Z-axn" firstAttribute="top" secondItem="W22-Y8-mWY" secondAttribute="top" constant="207" id="8Eb-u4-ydq"/>
+                            <constraint firstItem="W22-Y8-mWY" firstAttribute="trailing" secondItem="cRF-7Z-axn" secondAttribute="trailing" constant="83" id="ERL-n4-OUD"/>
+                            <constraint firstItem="cRF-7Z-axn" firstAttribute="centerX" secondItem="IKK-TX-Hei" secondAttribute="centerX" id="GpR-IE-ZJ1"/>
+                            <constraint firstItem="qdy-U8-WE7" firstAttribute="leading" secondItem="W22-Y8-mWY" secondAttribute="leading" constant="145" id="Okl-eq-1Qe"/>
+                            <constraint firstItem="W22-Y8-mWY" firstAttribute="bottom" secondItem="qdy-U8-WE7" secondAttribute="bottom" constant="254" id="Y0n-g1-CPr"/>
+                            <constraint firstItem="cRF-7Z-axn" firstAttribute="centerX" secondItem="qdy-U8-WE7" secondAttribute="centerX" id="yHQ-uy-w33"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="W22-Y8-mWY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1J1-Zv-Y3i"/>
+                    <connections>
+                        <outlet property="userIdLabel" destination="cRF-7Z-axn" id="CyP-Oz-C6v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WkK-A4-xWR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-752.17391304347836" y="855.80357142857144"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="uSo-Tp-0i6">
@@ -158,7 +212,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="pressSignUP:" destination="VJZ-xE-s88" eventType="touchUpInside" id="wuK-9E-eBe"/>
+                                    <action selector="signUpButtonTapped:" destination="VJZ-xE-s88" eventType="touchUpInside" id="wuK-9E-eBe"/>
                                 </connections>
                             </button>
                         </subviews>
