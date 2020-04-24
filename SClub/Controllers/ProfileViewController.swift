@@ -1,11 +1,3 @@
-//
-//  ProfileViewController.swift
-//  SClub
-//
-//  Created by Sultan on 24.04.2020.
-//  Copyright © 2020 com.Sultan. All rights reserved.
-//
-
 import UIKit
 import Firebase
 
@@ -16,15 +8,18 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // authenticateUserAndConfigureView()
+        authenticateUserAndConfigureView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        userIdLabel.text = Auth.auth().currentUser?.email
     }
     
     @IBAction func signOutButtonTapped(_ sender: UIButton) {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
-//            let nagigateVC = UINavigationController(rootViewController: LoginViewController())
-//            self.present(nagigateVC, animated: true, completion: nil)
+            self.performSegue(withIdentifier: "login", sender: nil)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
@@ -33,11 +28,8 @@ class ProfileViewController: UIViewController {
     func authenticateUserAndConfigureView() {
         if Auth.auth().currentUser == nil {
             DispatchQueue.main.async {
-                let nagigateVC = UINavigationController(rootViewController: LoginViewController())
-                self.present(nagigateVC, animated: true, completion: nil)
+                self.performSegue(withIdentifier: "login", sender: nil)
             }
-        } else {
-            userIdLabel.text = Auth.auth().currentUser?.email
         }
     }
     

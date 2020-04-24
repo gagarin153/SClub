@@ -104,11 +104,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qG3-oi-UQl"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Akf-qx-VAp"/>
                     <connections>
                         <outlet property="loginTextField" destination="3TO-le-BBO" id="sOQ-QE-rge"/>
                         <outlet property="passwordTextField" destination="jq7-P3-Pli" id="t7o-XD-d7I"/>
                         <outlet property="signUpButton" destination="6Qn-SZ-mh0" id="WIG-bd-6QB"/>
-                        <segue destination="be5-UR-4nJ" kind="presentation" identifier="login" modalPresentationStyle="fullScreen" id="YTi-O4-mfp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wup-NR-I1x" sceneMemberID="firstResponder"/>
@@ -159,11 +159,12 @@
                     <navigationItem key="navigationItem" id="1J1-Zv-Y3i"/>
                     <connections>
                         <outlet property="userIdLabel" destination="cRF-7Z-axn" id="CyP-Oz-C6v"/>
+                        <segue destination="3UM-nB-EKl" kind="presentation" identifier="login" modalPresentationStyle="fullScreen" id="icv-Ub-pbQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WkK-A4-xWR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-752.17391304347836" y="855.80357142857144"/>
+            <point key="canvasLocation" x="-1506" y="771"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="uSo-Tp-0i6">

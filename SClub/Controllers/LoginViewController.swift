@@ -9,7 +9,7 @@ class LoginViewController: UIViewController, DataDelegate {
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        //setAttribute()
+        setAttribute()
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -21,7 +21,8 @@ class LoginViewController: UIViewController, DataDelegate {
                 self?.showAlert(with: error.localizedDescription)
             } else {
                 if auth.currentUser?.isEmailVerified == true {
-                    self?.performSegue(withIdentifier: "login", sender: nil)
+                    //self?.performSegue(withIdentifier: "login", sender: nil)
+                    self?.dismiss(animated: true, completion: nil)
                 } else {
                     self?.showAlert(with: "Please confirm your email address first")
                 }
