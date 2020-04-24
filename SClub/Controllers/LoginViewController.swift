@@ -5,12 +5,11 @@ class LoginViewController: UIViewController, DataDelegate {
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
     @IBOutlet weak var signUpButton: UIButton!
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setAttribute()
+        //setAttribute()
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
