@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="be5-UR-4nJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zQn-gf-Aae">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -113,9 +113,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wup-NR-I1x" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-752.17391304347836" y="143.97321428571428"/>
+            <point key="canvasLocation" x="-62" y="146"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Profile -->
         <scene sceneID="13y-Le-FVL">
             <objects>
                 <viewController id="be5-UR-4nJ" customClass="ProfileViewController" customModule="SClub" customModuleProvider="target" sceneMemberID="viewController">
@@ -124,7 +124,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdy-U8-WE7">
-                                <rect key="frame" x="145" y="578" width="124" height="30"/>
+                                <rect key="frame" x="145" y="529" width="124" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.58440375330000005" blue="0.40399605039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Sign Out">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -156,15 +156,67 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="W22-Y8-mWY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Profile " image="eye" catalog="system" id="YiT-fB-s5i"/>
                     <navigationItem key="navigationItem" id="1J1-Zv-Y3i"/>
                     <connections>
                         <outlet property="userIdLabel" destination="cRF-7Z-axn" id="CyP-Oz-C6v"/>
-                        <segue destination="3UM-nB-EKl" kind="presentation" identifier="login" modalPresentationStyle="fullScreen" id="icv-Ub-pbQ"/>
+                        <segue destination="3UM-nB-EKl" kind="presentation" identifier="login" modalPresentationStyle="fullScreen" id="XWB-mL-MPg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WkK-A4-xWR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1506" y="771"/>
+            <point key="canvasLocation" x="-1113" y="865"/>
+        </scene>
+        <!--My chats-->
+        <scene sceneID="hGz-qS-Rpj">
+            <objects>
+                <viewController id="9z4-CN-n6u" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u8G-iZ-Tln">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="9Ta-LT-0xi"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="My chats" image="rectangle.stack.person.crop" catalog="system" id="22a-QA-TTy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="usU-O2-pkT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1955" y="863"/>
+        </scene>
+        <!--All chats-->
+        <scene sceneID="voe-i1-TPX">
+            <objects>
+                <viewController id="dLT-Qd-fEC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aRT-Z4-BX7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="xEz-4T-eBh"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="All chats" image="t.bubble" catalog="system" id="3mP-Ha-b4C"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ul6-xd-XO7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2720" y="863"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="z1F-LC-ivh">
+            <objects>
+                <tabBarController id="zQn-gf-Aae" customClass="TabBarController" customModule="SClub" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JKm-dZ-1O7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="dLT-Qd-fEC" kind="relationship" relationship="viewControllers" id="CsN-f0-aIw"/>
+                        <segue destination="9z4-CN-n6u" kind="relationship" relationship="viewControllers" id="uY4-in-LSJ"/>
+                        <segue destination="be5-UR-4nJ" kind="relationship" relationship="viewControllers" id="h1r-Fe-JBf"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hA7-9C-wPi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1955" y="146"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="uSo-Tp-0i6">
@@ -239,7 +291,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i12-Xb-YWZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="126" y="146"/>
+            <point key="canvasLocation" x="814" y="148"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="eye" catalog="system" width="64" height="40"/>
+        <image name="rectangle.stack.person.crop" catalog="system" width="64" height="60"/>
+        <image name="t.bubble" catalog="system" width="64" height="54"/>
+    </resources>
 </document>

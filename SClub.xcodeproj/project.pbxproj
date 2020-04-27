@@ -12,6 +12,7 @@
 		2F3C1D4D24531DEF0077C24F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3C1D4C24531DEF0077C24F /* ProfileViewController.swift */; };
 		2F50CC1524507A310037FD47 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F50CC1424507A310037FD47 /* GoogleService-Info.plist */; };
 		2F50CC172450BEFC0037FD47 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F50CC162450BEFC0037FD47 /* RegistrationViewController.swift */; };
+		2F75D3CB2457007700A1AC2C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F75D3CA2457007700A1AC2C /* TabBarController.swift */; };
 		2F8836822451C8D700EF8683 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8836812451C8D700EF8683 /* Keyboard.swift */; };
 		2F8836872451F5AD00EF8683 /* DataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8836862451F5AD00EF8683 /* DataDelegate.swift */; };
 		2F9F481A244DD6F9004AC276 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9F4819244DD6F9004AC276 /* AppDelegate.swift */; };
@@ -43,6 +44,7 @@
 		2F3C1D4C24531DEF0077C24F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2F50CC1424507A310037FD47 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F50CC162450BEFC0037FD47 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		2F75D3CA2457007700A1AC2C /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		2F8836812451C8D700EF8683 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		2F8836862451F5AD00EF8683 /* DataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDelegate.swift; sourceTree = "<group>"; };
 		2F9F4816244DD6F9004AC276 /* SClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +120,7 @@
 				2F9F482F244DDCA4004AC276 /* LoginViewController.swift */,
 				2F50CC162450BEFC0037FD47 /* RegistrationViewController.swift */,
 				2F3C1D4C24531DEF0077C24F /* ProfileViewController.swift */,
+				2F75D3CA2457007700A1AC2C /* TabBarController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				2F8836822451C8D700EF8683 /* Keyboard.swift in Sources */,
 				2F9F4830244DDCA4004AC276 /* LoginViewController.swift in Sources */,
 				2F8836872451F5AD00EF8683 /* DataDelegate.swift in Sources */,
+				2F75D3CB2457007700A1AC2C /* TabBarController.swift in Sources */,
 				2F9F481A244DD6F9004AC276 /* AppDelegate.swift in Sources */,
 				2F50CC172450BEFC0037FD47 /* RegistrationViewController.swift in Sources */,
 				2F9F481C244DD6F9004AC276 /* SceneDelegate.swift in Sources */,
