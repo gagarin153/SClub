@@ -28,9 +28,16 @@ class RegistrationViewController: UIViewController {
             if let error = error  {
                 self.showAlert(with: error.localizedDescription)
             } else {
+                let changeRequest = result?.user.createProfileChangeRequest()
+                        changeRequest?.displayName = "Sultan"
+                        changeRequest?.commitChanges { (error) in
+                            //print("\n\n\(error?.localizedDescription)\n\n")
+                        }
+                
+                
                 result?.user.sendEmailVerification(completion: nil)
                 self.delegate?.warnAboutConfirmEmail(string: "Before entering you need to confirm your mail. We sent an email on \(self.loginTextField.text ?? "")")
-                
+                result?.user.createProfileChangeRequest()
                 self.dismiss(animated: true, completion: nil)
             }
         }

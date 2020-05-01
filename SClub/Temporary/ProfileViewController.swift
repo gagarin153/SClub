@@ -12,7 +12,7 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        userIdLabel.text = Auth.auth().currentUser?.email
+        userIdLabel.text = Auth.auth().currentUser?.displayName
     }
     
     @IBAction func signOutButtonTapped(_ sender: UIButton) {
@@ -32,6 +32,5 @@ class ProfileViewController: UIViewController {
             }
         }
     }
-    
     
 }
