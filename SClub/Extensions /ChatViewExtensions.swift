@@ -7,7 +7,7 @@ extension ChatViewController: MessagesLayoutDelegate {
     
     func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         if isTimeLabelVisible(at: indexPath) { return 15 }
-        else {return 5}
+        else {return 0}
     }
     
     func cellBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
@@ -30,7 +30,7 @@ extension ChatViewController: MessagesLayoutDelegate {
 }
 
 extension ChatViewController: MessagesDisplayDelegate {
-        
+    
     func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
         return isFromCurrentSender(message: message) ? .darkText : .darkText
     }
@@ -52,7 +52,7 @@ extension ChatViewController: MessagesDisplayDelegate {
         corners.formUnion(.bottomLeft)
         corners.formUnion(.topRight)
         corners.formUnion(.bottomRight)
-
+        
         return .custom { view in
             let radius: CGFloat = 16
             let path = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
@@ -119,59 +119,76 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
 
 extension ChatViewController: MessagesDataSource {
     func currentSender() -> SenderType {
-           let sender = User(senderId: user?.uid ?? "Sultan", displayName: user?.email ?? "Sultan@test.com")
-           
-           return sender
-       }
-       
-       func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
-           return messages.count
-       }
-       
-       func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
-           return messages[indexPath.section]
-       }
-       
-       func isPreviousMessageSameSender(at indexPath: IndexPath) -> Bool {
-           guard indexPath.section - 1 >= 0 else { return false }
-           return messages[indexPath.section].user == messages[indexPath.section - 1].user
-       }
-       
-       func isNextMessageSameSender(at indexPath: IndexPath) -> Bool {
-           guard indexPath.section + 1 < messages.count else { return false }
-           return messages[indexPath.section].user == messages[indexPath.section + 1].user
-       }
-       
-       func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-           if isTimeLabelVisible(at: indexPath) {
-               return NSAttributedString(string: MessageKitDateFormatter.shared.string(from: message.sentDate), attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 10), NSAttributedString.Key.foregroundColor: UIColor.darkGray])
-           }
-           return nil
-       }
-       
-       func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-           if !isNextMessageSameSender(at: indexPath) && isFromCurrentSender(message: message) {
-               let dateString = formatter.string(from: message.sentDate)
-               return NSAttributedString(string: dateString, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption2)])
-           }
-           return nil
-       }
-       
-       func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-           if !isPreviousMessageSameSender(at: indexPath) {
-               if message.sender.senderId != user?.uid {
-                   let name = message.sender.displayName
-                   return NSAttributedString(string: name, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
-               }
-           }
-           return nil
-       }
-       
+        let sender = User(senderId: user?.uid ?? "Sultan", displayName: user?.email ?? "Sultan@test.com")
+        
+        return sender
+    }
+    
+    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
+        return messages.count
+    }
+    
+    func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
+        return messages[indexPath.section]
+    }
+    
+    func isPreviousMessageSameSender(at indexPath: IndexPath) -> Bool {
+        guard indexPath.section - 1 >= 0 else { return false }
+        return messages[indexPath.section].user == messages[indexPath.section - 1].user
+    }
+    
+    func isNextMessageSameSender(at indexPath: IndexPath) -> Bool {
+        guard indexPath.section + 1 < messages.count else { return false }
+        return messages[indexPath.section].user == messages[indexPath.section + 1].user
+    }
+    
+    func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        if isTimeLabelVisible(at: indexPath) {
+            return NSAttributedString(string: MessageKitDateFormatter.shared.string(from: message.sentDate), attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 10), NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        }
+        return nil
+    }
+    
+    func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        if !isNextMessageSameSender(at: indexPath) && isFromCurrentSender(message: message) {
+            let dateString = formatter.string(from: message.sentDate)
+            return NSAttributedString(string: dateString, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption2)])
+        }
+        return nil
+    }
+    
+    func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        if !isPreviousMessageSameSender(at: indexPath) {
+            if message.sender.senderId != user?.uid {
+                let name = message.sender.displayName
+                return NSAttributedString(string: name, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
+            }
+        }
+        return nil
+    }
+    
 }
 
 // MARK: - MessageCellDelegate
 
 extension ChatViewController: MessageCellDelegate {
+    func didTapMessage(in cell: MessageCollectionViewCell) {
+        messageInputBar.inputTextView.resignFirstResponder()
+    }
+    
+    func didTapBackground(in cell: MessageCollectionViewCell) {
+        messageInputBar.inputTextView.resignFirstResponder()
+    }
+    
+    func didTapMessageTopLabel(in cell: MessageCollectionViewCell) {
+        messageInputBar.inputTextView.resignFirstResponder()
+    }
+    
+    func didTapMessageBottomLabel(in cell: MessageCollectionViewCell) {
+        messageInputBar.inputTextView.resignFirstResponder()
+    }
+    
+    
 }
 
 // MARK: - MessageLabelDelegate

@@ -30,31 +30,35 @@ class ChatViewController: MessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        setmessageListener()
+        configureNavigationItem()
+        configureFirebaseSettings()
         configureMessageCollectionView()
         configureMessageInputBar()
-
-    }
-    
-    internal func save(_ message: Message) {
-        reference?.addDocument(data: message.representation) { error in
-            if let e = error {
-                print("Error sending message: \(e.localizedDescription)")
-                return
-            }
-            
-            self.messagesCollectionView.scrollToBottom()
-        }
     }
     
     
-    func setmessageListener() {
+    func configureNavigationItem() {
+        navigationController?.navigationBar.backItem?.backBarButtonItem =  UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
+        navigationController?.navigationBar.tintColor = .black
+        // navigationController?.navigationBar.
+    }
+    
+    
+    
+    func configureFirebaseSettings() {
         guard let id = chat.id else {
             navigationController?.popViewController(animated: true)
             return
         }
+        
+        db.collection("resently").document((Auth.auth().currentUser?.uid)!).collection("chats").document(id).setData(["name": chat.name, "date": Date().description,  ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+        
         
         reference = db.collection(["chats", id, "thread"].joined(separator: "/"))
         
@@ -126,6 +130,19 @@ class ChatViewController: MessagesViewController {
         }
     }
     
+    
+    internal func save(_ message: Message) {
+        reference?.addDocument(data: message.representation) { error in
+            if let e = error {
+                print("Error sending message: \(e.localizedDescription)")
+                return
+            }
+            
+            self.messagesCollectionView.scrollToBottom()
+        }
+    }
+    
+    
     func insertMessage(_ message: Message) {
         guard !messages.contains(message) else {
             return
@@ -133,12 +150,8 @@ class ChatViewController: MessagesViewController {
         
         messages.append(message)
         messages.sort()
-        
         let isLatestMessage = messages.index(of: message) == (messages.count - 1)
-        
-        
         let shouldScrollToBottom = messagesCollectionView.isAtBottom && isLatestMessage
-        
         messagesCollectionView.reloadData()
         
         if shouldScrollToBottom {
@@ -146,7 +159,6 @@ class ChatViewController: MessagesViewController {
                 self.messagesCollectionView.scrollToBottom(animated: false)
             }
         }
-        
     }
     
     func isTimeLabelVisible(at indexPath: IndexPath) -> Bool {
@@ -161,7 +173,7 @@ class ChatViewController: MessagesViewController {
     
     // MARK: - MessagesDataSource
     
-   
+    
 }
 
 
