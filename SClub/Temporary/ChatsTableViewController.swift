@@ -64,43 +64,43 @@ class ChatsTableViewController: UITableViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        let selector = #selector(printChat)
-        navigationItem.rightBarButtonItem =  UIBarButtonItem(title: "Button ", style: .plain, target: self, action: selector)
-
-        
-    }
-    
-    @objc func printChat() {
-        print(chats)
-        
-        let id = chats[0].id!
-       // let ref = db.collection("chats").document()     .joined(separator: "/"))
-       // db.collection("resently").document((Auth.auth().currentUser?.email)!)
-        
-       // db.collection(["resently", (Auth.auth().currentUser?.email)!, "chats"].joined(separator: "/"))
-        
-    
-
-        db.collection("resently").document((Auth.auth().currentUser?.email)!).collection("chats").document("fwe").setData(["id": "fwe", "date": Date().description,  ]) { err in
-                 if let err = err {
-                     print("Error writing document: \(err)")
-                 } else {
-                     print("Document successfully written!")
-                 }
-             }
-        
-        
-        db.collection("resently").document((Auth.auth().currentUser?.email)!).collection("chats").document().setData(["fwe": "ewfewqewf", "date": Date().description,  ]) { err in
-                 if let err = err {
-                     print("Error writing document: \(err)")
-                 } else {
-                     print("Document successfully written!")
-                 }
-             }
-        
-        }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        let selector = #selector(printChat)
+//        navigationItem.rightBarButtonItem =  UIBarButtonItem(title: "Button ", style: .plain, target: self, action: selector)
+//
+//
+//    }
+//
+//    @objc func printChat() {
+//        print(chats)
+//
+//        let id = chats[0].id!
+//       // let ref = db.collection("chats").document()     .joined(separator: "/"))
+//       // db.collection("resently").document((Auth.auth().currentUser?.email)!)
+//
+//       // db.collection(["resently", (Auth.auth().currentUser?.email)!, "chats"].joined(separator: "/"))
+//
+//
+//
+//        db.collection("resently").document((Auth.auth().currentUser?.email)!).collection("chats").document("fwe").setData(["id": "fwe", "date": Date().description,  ]) { err in
+//                 if let err = err {
+//                     print("Error writing document: \(err)")
+//                 } else {
+//                     print("Document successfully written!")
+//                 }
+//             }
+//
+//
+//        db.collection("resently").document((Auth.auth().currentUser?.email)!).collection("chats").document().setData(["fwe": "ewfewqewf", "date": Date().description,  ]) { err in
+//                 if let err = err {
+//                     print("Error writing document: \(err)")
+//                 } else {
+//                     print("Document successfully written!")
+//                 }
+//             }
+//
+//        }
     
     private func handleDocumentChange(_ change: DocumentChange) {
         guard let channel = Chat(document: change.document) else {

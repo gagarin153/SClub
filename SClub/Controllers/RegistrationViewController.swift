@@ -2,21 +2,38 @@ import UIKit
 import Firebase
 
 
-class RegistrationViewController: UIViewController {
+class RegistrationViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var nickIdLabel: UILabel!
     
+    let nickId = IndividualNumber.getIndividualNumber()
     var delegate: DataDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nameTextField.smartInsertDeleteType = UITextSmartInsertDeleteType.no
+        nameTextField.delegate = self
         setAttribute()
         
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let textFieldText = textField.text,
+            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+                return false
+        }
+        let substringToReplace = textFieldText[rangeOfTextToReplace]
+        let count = textFieldText.count - substringToReplace.count + string.count
+        return count <= 17
+    }
+    
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
-        guard let email = loginTextField.text, let password = passwordTextField.text, email != "", password != ""
+        guard let email = loginTextField.text, let password = passwordTextField.text, let name = nameTextField.text else {return}
+        
+        guard name != "" , email != "", password != ""
             else { return }
         
         if let loginErrorText = Validation(email: email, password: password).error() {
@@ -29,10 +46,10 @@ class RegistrationViewController: UIViewController {
                 self.showAlert(with: error.localizedDescription)
             } else {
                 let changeRequest = result?.user.createProfileChangeRequest()
-                        changeRequest?.displayName = "Sultan"
-                        changeRequest?.commitChanges { (error) in
-                            //print("\n\n\(error?.localizedDescription)\n\n")
-                        }
+                changeRequest?.displayName = name + self.nickId
+                changeRequest?.commitChanges { (error) in
+                    //print("\n\n\(error?.localizedDescription)\n\n")
+                }
                 
                 
                 result?.user.sendEmailVerification(completion: nil)
@@ -45,7 +62,7 @@ class RegistrationViewController: UIViewController {
     
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        Keyboard.hide(for: loginTextField, passwordTextField )
+        Keyboard.hide(for: loginTextField, passwordTextField, nameTextField )
     }
     
     func showAlert(with message: String ) {
@@ -59,6 +76,16 @@ class RegistrationViewController: UIViewController {
                                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         loginTextField.attributedPlaceholder = NSAttributedString(string: "Email",
                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        nameTextField.attributedPlaceholder = NSAttributedString(string: "Name",
+                                                                 attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        loginTextField.addLine(color: .black, width: 1)
+        passwordTextField.addLine(color: .black, width: 1)
+        nameTextField.addLine(color: .black, width: 1)
+        nickIdLabel.addLine(color: .black, width: 1)
+        nickIdLabel.attributedText = NSAttributedString(string: nickId,
+        attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        nameTextField.autocorrectionType = .yes
+        nameTextField.autocapitalizationType = .sentences
         
     }
 }

@@ -6,7 +6,7 @@ class LoginViewController: UIViewController, DataDelegate {
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setAttribute()
@@ -44,11 +44,11 @@ class LoginViewController: UIViewController, DataDelegate {
                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password",
                                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
-        loginTextField.autocorrectionType = .yes
-        passwordTextField.autocorrectionType = .yes
+        
         signUpButton.layer.borderWidth = 0
+        loginTextField.addLine(color: .black, width: 1)
+        passwordTextField.addLine(color: .black, width: 1)
     }
-    
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         Keyboard.hide(for: loginTextField, passwordTextField )
@@ -69,3 +69,4 @@ class LoginViewController: UIViewController, DataDelegate {
     }
     
 }
+

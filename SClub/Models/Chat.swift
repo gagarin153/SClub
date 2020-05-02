@@ -51,7 +51,7 @@ extension Chat: Comparable {
   }
   
   static func < (lhs: Chat, rhs: Chat) -> Bool {
-    return lhs.dateOfUse! < rhs.dateOfUse!
+    return lhs.dateOfUse! > rhs.dateOfUse!
   }
 
 }
