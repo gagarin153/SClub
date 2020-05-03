@@ -17,11 +17,10 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SClub" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVH-pW-gLo">
                                 <rect key="frame" x="118" y="181" width="200" height="100"/>
-                                <color key="backgroundColor" red="1" green="0.58440375330000005" blue="0.40399605039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="HHv-p7-FI3"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="xMk-1e-hPW"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="ywJ-Eq-TCM"/>
+                                    <constraint firstAttribute="height" constant="100" id="DmC-0P-ekT"/>
+                                    <constraint firstAttribute="width" constant="200" id="GwL-Xv-EJh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -30,10 +29,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.2555888295" green="0.65856236219999997" blue="0.4819603562" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="aVH-pW-gLo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="118" id="BVZ-4r-cXC"/>
-                            <constraint firstItem="aVH-pW-gLo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="137" id="Gh6-at-NwM"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="aVH-pW-gLo" secondAttribute="bottom" constant="581" id="Iku-aX-VWm"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aVH-pW-gLo" secondAttribute="trailing" constant="96" id="WvX-rI-2c2"/>
+                            <constraint firstItem="aVH-pW-gLo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="118" id="NPg-16-wzF"/>
+                            <constraint firstItem="aVH-pW-gLo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="137" id="Nkw-zK-P7k"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aVH-pW-gLo" secondAttribute="trailing" constant="96" id="cdf-uM-vGl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

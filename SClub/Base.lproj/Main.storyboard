@@ -124,51 +124,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdy-U8-WE7">
-                                <rect key="frame" x="145" y="529" width="124" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.58440375330000005" blue="0.40399605039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Sign Out">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="signOutButtonTapped:" destination="be5-UR-4nJ" eventType="touchUpInside" id="Mni-Bg-shI"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRF-7Z-axn">
-                                <rect key="frame" x="83" y="251" width="248" height="92"/>
-                                <color key="backgroundColor" red="1" green="0.58440375330000005" blue="0.40399605039999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G2S-hr-V0S">
+                                <rect key="frame" x="0.0" y="0.0" width="434" height="36"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="92" id="YYc-1I-Fb7"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="247" id="iIU-xj-HQs"/>
+                                    <constraint firstAttribute="height" constant="36" id="x0S-MP-Wv6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yng-60-O6G">
+                                <rect key="frame" x="0.0" y="36" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="7lm-sE-oDz">
+                                        <barButtonItem key="rightBarButtonItem" title="sign out" id="pFK-rk-eBj">
+                                            <color key="tintColor" red="0.2555888295" green="0.65856236219999997" blue="0.4819603562" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="signOutButtonTapped:" destination="be5-UR-4nJ" id="1AN-Qh-hOn"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.2555888295" green="0.65856236219999997" blue="0.4819603562" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="cRF-7Z-axn" firstAttribute="top" secondItem="W22-Y8-mWY" secondAttribute="top" constant="207" id="8Eb-u4-ydq"/>
-                            <constraint firstItem="W22-Y8-mWY" firstAttribute="trailing" secondItem="cRF-7Z-axn" secondAttribute="trailing" constant="83" id="ERL-n4-OUD"/>
-                            <constraint firstItem="cRF-7Z-axn" firstAttribute="centerX" secondItem="IKK-TX-Hei" secondAttribute="centerX" id="GpR-IE-ZJ1"/>
-                            <constraint firstItem="qdy-U8-WE7" firstAttribute="leading" secondItem="W22-Y8-mWY" secondAttribute="leading" constant="145" id="Okl-eq-1Qe"/>
-                            <constraint firstItem="W22-Y8-mWY" firstAttribute="bottom" secondItem="qdy-U8-WE7" secondAttribute="bottom" constant="254" id="Y0n-g1-CPr"/>
-                            <constraint firstItem="cRF-7Z-axn" firstAttribute="centerX" secondItem="qdy-U8-WE7" secondAttribute="centerX" id="yHQ-uy-w33"/>
+                            <constraint firstAttribute="trailing" secondItem="G2S-hr-V0S" secondAttribute="trailing" constant="-20" id="DSF-QS-tS8"/>
+                            <constraint firstItem="G2S-hr-V0S" firstAttribute="leading" secondItem="IKK-TX-Hei" secondAttribute="leading" id="lGq-dk-qm6"/>
+                            <constraint firstItem="G2S-hr-V0S" firstAttribute="top" secondItem="IKK-TX-Hei" secondAttribute="top" id="xQR-yv-f1s"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="W22-Y8-mWY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="person.crop.circle" catalog="system" id="YiT-fB-s5i">
                         <color key="badgeColor" red="0.2555888295" green="0.65856236219999997" blue="0.4819603562" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
-                    <navigationItem key="navigationItem" id="1J1-Zv-Y3i"/>
                     <connections>
-                        <outlet property="userIdLabel" destination="cRF-7Z-axn" id="CyP-Oz-C6v"/>
+                        <outlet property="titleItem" destination="7lm-sE-oDz" id="j2T-TA-Kh8"/>
                         <segue destination="3UM-nB-EKl" kind="presentation" identifier="login" modalPresentationStyle="fullScreen" id="XWB-mL-MPg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WkK-A4-xWR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-901" y="865"/>
+            <point key="canvasLocation" x="-901.44927536231887" y="864.50892857142856"/>
         </scene>
         <!--Create chat-->
         <scene sceneID="WXt-sR-FX6">
@@ -296,8 +293,6 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JKm-dZ-1O7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.2555888295" green="0.65856236219999997" blue="0.4819603562" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="0.2555888295" green="0.65856236219999997" blue="0.4819603562" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="VID-1n-PbO" kind="relationship" relationship="viewControllers" id="ei7-CV-vcG"/>
@@ -391,7 +386,6 @@
                             <constraint firstItem="vsi-BG-1VR" firstAttribute="top" secondItem="hqm-M9-4jQ" secondAttribute="bottom" constant="8" id="3HR-g7-kV3"/>
                             <constraint firstItem="CUx-63-WvX" firstAttribute="top" secondItem="oTQ-2q-Mqx" secondAttribute="bottom" constant="20" id="4hg-sL-CZJ"/>
                             <constraint firstItem="oTQ-2q-Mqx" firstAttribute="trailing" secondItem="CUx-63-WvX" secondAttribute="trailing" id="4xY-0j-EiN"/>
-                            <constraint firstItem="hqm-M9-4jQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Mzl-Jm-8xT" secondAttribute="leading" symbolic="YES" id="B5T-KN-eRD"/>
                             <constraint firstItem="oTQ-2q-Mqx" firstAttribute="top" secondItem="vsi-BG-1VR" secondAttribute="bottom" constant="8" id="Fdy-4I-JBE"/>
                             <constraint firstItem="vsi-BG-1VR" firstAttribute="leading" secondItem="oTQ-2q-Mqx" secondAttribute="leading" id="I68-tA-LRS"/>
                             <constraint firstItem="Mzl-Jm-8xT" firstAttribute="trailing" secondItem="g9J-rS-O4k" secondAttribute="trailing" constant="186" id="JC0-TV-t8i"/>

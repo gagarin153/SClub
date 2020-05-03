@@ -39,12 +39,10 @@ class ChatViewController: MessagesViewController {
     
     func configureNavigationItem() {
         navigationController?.navigationBar.backItem?.backBarButtonItem =  UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
-        navigationController?.navigationBar.tintColor = .black
-        // navigationController?.navigationBar.
+        navigationController?.navigationBar.tintColor = .mint
     }
     
-    
-    
+
     func configureFirebaseSettings() {
         guard let id = chat.id else {
             navigationController?.popViewController(animated: true)
