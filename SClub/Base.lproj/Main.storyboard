@@ -116,7 +116,7 @@
             </objects>
             <point key="canvasLocation" x="-62.318840579710148" y="145.98214285714286"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Profile-->
         <scene sceneID="13y-Le-FVL">
             <objects>
                 <viewController id="be5-UR-4nJ" customClass="ProfileViewController" customModule="SClub" customModuleProvider="target" sceneMemberID="viewController">
@@ -155,7 +155,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="W22-Y8-mWY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="person.crop.circle" catalog="system" id="YiT-fB-s5i">
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.crop.circle" catalog="system" id="YiT-fB-s5i">
                         <color key="badgeColor" red="0.2555888295" green="0.65856236219999997" blue="0.4819603562" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <connections>
@@ -167,51 +167,12 @@
             </objects>
             <point key="canvasLocation" x="-901.44927536231887" y="864.50892857142856"/>
         </scene>
-        <!--Create chat-->
-        <scene sceneID="WXt-sR-FX6">
-            <objects>
-                <viewController id="q4t-Da-06w" customClass="SimpleCreateChatControllerViewController" customModule="SClub" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0Jc-sI-Ja7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Of-Os-GDf">
-                                <rect key="frame" x="159" y="320" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1U-iY-tfY">
-                                <rect key="frame" x="118" y="609" width="178" height="52"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="createChatButtonTapped:" destination="q4t-Da-06w" eventType="touchUpInside" id="D0M-Ex-nPH"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="o8x-Wi-Wol"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Create chat" image="pencil.circle.fill" catalog="system" id="xev-Fr-8xW"/>
-                    <connections>
-                        <outlet property="chatName" destination="7Of-Os-GDf" id="RRy-jI-D1S"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Wl1-b8-n3S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1610.144927536232" y="864.50892857142856"/>
-        </scene>
         <!--Chats-->
         <scene sceneID="bvq-Sa-10m">
             <objects>
                 <tableViewController id="tf7-nx-PPR" customClass="ChatsTableViewController" customModule="SClub" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Gqa-bR-2tD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.2555888295" green="0.65856236219999997" blue="0.4819603562" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -297,7 +258,6 @@
                     <connections>
                         <segue destination="VID-1n-PbO" kind="relationship" relationship="viewControllers" id="ei7-CV-vcG"/>
                         <segue destination="bDQ-VX-hsI" kind="relationship" relationship="viewControllers" id="35G-Dg-Lh1"/>
-                        <segue destination="q4t-Da-06w" kind="relationship" relationship="viewControllers" id="suB-GB-baF"/>
                         <segue destination="be5-UR-4nJ" kind="relationship" relationship="viewControllers" id="h1r-Fe-JBf"/>
                     </connections>
                 </tabBarController>
@@ -421,10 +381,9 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bDQ-VX-hsI" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="All chats" image="person.3.fill" catalog="system" id="Uxo-gS-CSS"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="S6W-IB-6rg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="S6W-IB-6rg">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.2555888295" green="0.65856236219999997" blue="0.4819603562" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -456,12 +415,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pencil.circle.fill" catalog="system" width="64" height="60"/>
         <image name="person.3.fill" catalog="system" width="71" height="34"/>
         <image name="person.crop.circle" catalog="system" width="64" height="60"/>
         <image name="shift" catalog="system" width="64" height="52"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0zI-YU-DSd"/>
+        <segue reference="vjq-r9-5VU"/>
     </inferredMetricsTieBreakers>
 </document>

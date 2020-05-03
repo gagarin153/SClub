@@ -122,7 +122,6 @@
 		2F75D3CE2457149100A1AC2C /* Temporary */ = {
 			isa = PBXGroup;
 			children = (
-				2F3C1D4C24531DEF0077C24F /* ProfileViewController.swift */,
 				2F42D22D245DBC930092E367 /* ResentlyTableViewController.swift */,
 				2F75D3CC2457148200A1AC2C /* SimpleCreateChatControllerViewController.swift */,
 				2F134A052457179C009CDDAF /* ChatsTableViewController.swift */,
@@ -158,6 +157,7 @@
 				2F9F482F244DDCA4004AC276 /* LoginViewController.swift */,
 				2F50CC162450BEFC0037FD47 /* RegistrationViewController.swift */,
 				2F47DEB924587D3B00CF5A84 /* ChatViewController.swift */,
+				2F3C1D4C24531DEF0077C24F /* ProfileViewController.swift */,
 				2F75D3CA2457007700A1AC2C /* TabBarController.swift */,
 			);
 			path = Controllers;

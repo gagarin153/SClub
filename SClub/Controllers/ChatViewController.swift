@@ -30,14 +30,15 @@ class ChatViewController: MessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationItem()
+        configureNavigationBar()
         configureFirebaseSettings()
         configureMessageCollectionView()
         configureMessageInputBar()
     }
     
     
-    func configureNavigationItem() {
+    func configureNavigationBar() {
+       // navigationController?.navigationBar.backgroundColor = .black
         navigationController?.navigationBar.backItem?.backBarButtonItem =  UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
         navigationController?.navigationBar.tintColor = .mint
     }
