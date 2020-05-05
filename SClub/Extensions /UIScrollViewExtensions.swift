@@ -14,4 +14,9 @@ extension UIScrollView {
         return scrollViewBottomOffset
     }
     
+    
+    func moveToPage(number : CGFloat) {
+        self.setContentOffset(CGPoint(x: number * self.bounds.size.width, y: self.contentOffset.y), animated: true)
+    }
+    
 }

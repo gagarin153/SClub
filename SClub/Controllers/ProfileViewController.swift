@@ -5,8 +5,12 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var titleItem: UINavigationItem!
     private let db = Firestore.firestore()
-    private var chatsReference: CollectionReference {
+    private var globalChatsReference: CollectionReference {
         return db.collection("chats")
+    }
+    
+    private var mineChatsReference: CollectionReference {
+        return db.collection("usersCreateChats").document((Auth.auth().currentUser?.uid)!).collection("chats")
     }
     private var currentChannelAlertController: UIAlertController?
     let nickId = IndividualNumber()
@@ -124,9 +128,19 @@ class ProfileViewController: UIViewController {
         guard let name = ac.textFields?.first?.text else {return}
         let chat = Chat(name: name + IndividualNumber.getIndividualNumber() )
         
-        chatsReference.addDocument(data: chat.representation) { error in
+        print(chat.representation)
+        
+      let id =   globalChatsReference.addDocument(data: chat.representation)  { error in
             if let e = error {
                 print("Error saving channel: \(e.localizedDescription)")
+            }
+        }.documentID
+        
+        mineChatsReference.document(id).setData(["name": chat.name, "date": Date(),  ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
             }
         }
     }

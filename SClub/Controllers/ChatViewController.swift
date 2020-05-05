@@ -50,7 +50,7 @@ class ChatViewController: MessagesViewController {
             return
         }
         
-        db.collection("resently").document((Auth.auth().currentUser?.uid)!).collection("chats").document(id).setData(["name": chat.name, "date": Date(),  ]) { err in
+        db.collection("recentlyChats").document((Auth.auth().currentUser?.uid)!).collection("chats").document(id).setData(["name": chat.name, "date": Date(),  ]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
             } else {

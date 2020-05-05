@@ -9,6 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         UITabBar.appearance().tintColor = .mint
         UITabBar.appearance().barTintColor = .black
+        UITabBar.appearance().isTranslucent = false
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = .mint
         return true
     }

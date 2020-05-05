@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TableColleCollectionViewCell" customModule="SClub" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="614" height="703"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="614" height="703"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QAt-t8-6AP">
+                        <rect key="frame" x="0.0" y="0.0" width="614" height="703"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </tableView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="QAt-t8-6AP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="7i5-k7-hih"/>
+                <constraint firstAttribute="trailing" secondItem="QAt-t8-6AP" secondAttribute="trailing" id="FJQ-tu-IKf"/>
+                <constraint firstItem="QAt-t8-6AP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="TPQ-nk-rUv"/>
+                <constraint firstAttribute="bottom" secondItem="QAt-t8-6AP" secondAttribute="bottom" id="xvK-e1-SaG"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="614" height="703"/>
+            <connections>
+                <outlet property="tableView" destination="QAt-t8-6AP" id="UED-eR-EC8"/>
+            </connections>
+            <point key="canvasLocation" x="143.47826086956522" y="248.10267857142856"/>
+        </collectionViewCell>
+    </objects>
+</document>
