@@ -10,7 +10,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nickIdLabel: UILabel!
     
     let nickId = IndividualNumber.getIndividualNumber()
-    var delegate: DataDelegate?
+    var delegate: ConfirmEmailDataDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +31,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
+        Keyboard.hide(for: loginTextField, passwordTextField, nameTextField )
         guard let email = loginTextField.text, let password = passwordTextField.text, let name = nameTextField.text else {return}
         
         guard name != "" , email != "", password != ""

@@ -77,7 +77,7 @@ class ProfileViewController: UIViewController {
         }))
         present(ac, animated: true, completion: nil)
     }
-    
+
     func createAlert(title: String, actionName: String, callFunc: @escaping () ->() ) {
         let ac = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -91,7 +91,7 @@ class ProfileViewController: UIViewController {
             field.tintColor = .white
         }
         
-        let createAction = UIAlertAction(title: actionName, style: .destructive, handler: { _ in
+        let createAction = UIAlertAction(title: actionName, style: .destructive, handler:  { _ in
             callFunc()
         })
         createAction.isEnabled = false

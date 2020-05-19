@@ -1,7 +1,7 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController, DataDelegate {
+class LoginViewController: UIViewController, ConfirmEmailDataDelegate {
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -13,6 +13,7 @@ class LoginViewController: UIViewController, DataDelegate {
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
+        Keyboard.hide(for: loginTextField, passwordTextField)
         guard let email = loginTextField.text, let password = passwordTextField.text, email != "", password != ""
             else { return }
         let auth = Auth.auth()

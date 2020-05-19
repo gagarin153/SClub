@@ -1,5 +1,6 @@
 import UIKit
 
-protocol DataDelegate {
+protocol ConfirmEmailDataDelegate {
     func warnAboutConfirmEmail(string: String) 
 }
+

@@ -62,7 +62,7 @@ class ChatsTableViewController: UITableViewController {
        //
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-
+       // tableView.resignFirstResponder()
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
         title = "Chats"
@@ -194,6 +194,7 @@ class ChatsTableViewController: UITableViewController {
 
 extension ChatsTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
+        print("I am here")
         let lowerCasedText = (searchController.searchBar.text!).lowercased()
         filteredChats = chats.filter {$0.name.lowercased().contains(lowerCasedText)}
         

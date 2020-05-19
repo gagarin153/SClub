@@ -50,6 +50,7 @@ class ChatViewController: MessagesViewController {
             return
         }
         
+        
         db.collection("recentlyChats").document((Auth.auth().currentUser?.uid)!).collection("chats").document(id).setData(["name": chat.name, "date": Date(),  ]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
@@ -149,7 +150,7 @@ class ChatViewController: MessagesViewController {
         
         messages.append(message)
         messages.sort()
-        let isLatestMessage = messages.index(of: message) == (messages.count - 1)
+        let isLatestMessage = messages.firstIndex(of: message) == (messages.count - 1)
         let shouldScrollToBottom = messagesCollectionView.isAtBottom && isLatestMessage
         messagesCollectionView.reloadData()
         

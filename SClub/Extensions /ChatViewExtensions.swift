@@ -85,7 +85,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
         let range = NSRange(location: 0, length: attributedText.length)
         attributedText.enumerateAttribute(.autocompleted, in: range, options: []) { (_, range, _) in
             let substring = attributedText.attributedSubstring(from: range)
-            let context = substring.attribute(.autocompletedContext, at: 0, effectiveRange: nil)
+            let _ = substring.attribute(.autocompletedContext, at: 0, effectiveRange: nil)
         }
         
         let components = inputBar.inputTextView.components
@@ -109,7 +109,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                 let message = Message(text: str, user: sender, messageId: UUID().uuidString, date: Date())
                 //insertMessage(message)
                 save(message)
-            } else if let img = component as? UIImage {
+            } else if let _ = component as? UIImage {
                 //                let message = MockMessage(image: img, user: sender, messageId: UUID().uuidString, date: Date())
                 //                insertMessage(message)
             }

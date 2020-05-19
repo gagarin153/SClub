@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TableColleCollectionViewCell" customModule="SClub" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ChatsCollectionViewCell" customModule="SClub" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="614" height="703"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -18,15 +18,18 @@
                 <subviews>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QAt-t8-6AP">
                         <rect key="frame" x="0.0" y="0.0" width="614" height="703"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </tableView>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="QAt-t8-6AP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="7i5-k7-hih"/>
-                <constraint firstAttribute="trailing" secondItem="QAt-t8-6AP" secondAttribute="trailing" id="FJQ-tu-IKf"/>
-                <constraint firstItem="QAt-t8-6AP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="TPQ-nk-rUv"/>
-                <constraint firstAttribute="bottom" secondItem="QAt-t8-6AP" secondAttribute="bottom" id="xvK-e1-SaG"/>
+                <constraint firstItem="QAt-t8-6AP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ST5-C0-OhT"/>
+                <constraint firstItem="QAt-t8-6AP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="hEz-kg-gdQ"/>
+                <constraint firstAttribute="trailing" secondItem="QAt-t8-6AP" secondAttribute="trailing" id="v0M-cZ-3rY"/>
+                <constraint firstAttribute="bottom" secondItem="QAt-t8-6AP" secondAttribute="bottom" id="zE9-d0-vm4"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="614" height="703"/>

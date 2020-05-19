@@ -2,7 +2,10 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
+
 class ChatsCollectionViewController: UIViewController {
+    
+    
     
     @IBOutlet weak var buttonsContainer: UIView!
     @IBOutlet weak var recentlyButton: UIButton!
@@ -11,10 +14,14 @@ class ChatsCollectionViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     private let searchController = UISearchController(searchResultsController: nil)
     let cellId = "cellId"
-    // var container = [[Chat]]()
     var globalChats = [Chat]()
     var recentlyChats = [Chat]()
     var mineChats = [Chat]()
+    var pageNumber = 0 {
+        didSet {
+            // collectionView.reloadData()
+        }
+    }
     private var globalChatListener: ListenerRegistration?
     private var recentlyChatListener: ListenerRegistration?
     private var mineChatListener: ListenerRegistration?
@@ -34,11 +41,27 @@ class ChatsCollectionViewController: UIViewController {
         globalChatListener?.remove()
     }
     
+    
+    var filteredChats = [[Chat](),[Chat](), [Chat]()]
+    private var isFiltering: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
+    
+    //      private var currentArray: [Chat] {
+    //             return !isFiltering ? chats : filteredChats
+    //         }
+    
+    private var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false}
+        return text.isEmpty
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        self.collectionView.register(UINib(nibName: "TableColleCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellId)
+        self.searchController.searchBar.delegate = self
+        self.collectionView.register(UINib(nibName: "ChatsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellId)
         configureNavigationBar()
         configureListeners()
     }
@@ -51,10 +74,9 @@ class ChatsCollectionViewController: UIViewController {
             }
             
             snapshot.documentChanges.forEach { change in
-                self.handleDocumentChange(change, forChat: 0)
+                self.handleDocumentChange(change, forPage: 0)
             }
         }
-        
         
         recentlyChatListener = recentlyReference.addSnapshotListener { querySnapshot, error in
             guard let snapshot = querySnapshot else {
@@ -63,20 +85,20 @@ class ChatsCollectionViewController: UIViewController {
             }
             
             snapshot.documentChanges.forEach { change in
-                self.handleDocumentChange(change, forChat: 1)
+                self.handleDocumentChange(change, forPage: 1)
             }
         }
         
         mineChatListener = mineReference.addSnapshotListener { querySnapshot, error in
-                  guard let snapshot = querySnapshot else {
-                      print("Error listening for channel updates: \(error?.localizedDescription ?? "No error")")
-                      return
-                  }
-                  
-                  snapshot.documentChanges.forEach { change in
-                      self.handleDocumentChange(change, forChat: 2)
-                  }
-              }
+            guard let snapshot = querySnapshot else {
+                print("Error listening for channel updates: \(error?.localizedDescription ?? "No error")")
+                return
+            }
+            
+            snapshot.documentChanges.forEach { change in
+                self.handleDocumentChange(change, forPage: 2)
+            }
+        }
         
     }
     
@@ -91,38 +113,38 @@ class ChatsCollectionViewController: UIViewController {
     }
     
     
-    private func handleDocumentChange(_ change: DocumentChange, forChat index: Int ) {
-          guard let chat = Chat(document: change.document) else {
-              return
-          }
-          
-          let  addChatFuncs = [addChatToGlobal, addChatToRecently, addChatToMine]
-          
-          switch change.type {
-          case .added:
-              addChatFuncs[index](chat)
-          case .modified:
-              replaceChat(chat)
-          case .removed: break
-          }
-          
-      }
+    private func handleDocumentChange(_ change: DocumentChange, forPage index: Int ) {
+        guard let chat = Chat(document: change.document) else {
+            return
+        }
+        
+        let  addChatFuncs = [addChatToGlobal, addChatToRecently, addChatToMine]
+        let  deleteChatFuncs = [deleteChatFromGlobal, deleteChatFromRecently, deleteChatFromMine]
+        
+        switch change.type {
+        case .added:
+            addChatFuncs[index](chat)
+        case .modified:
+            if index != 1 {break}
+            replaceChat(chat)
+        case .removed:
+            deleteChatFuncs[index](chat)
+        }
+        
+    }
     
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-          
-          switch collectionView.bounds.minX {
-          case 0.0:
-              changeColors(forButton: 0)
-          case collectionView.bounds.width:
-              changeColors(forButton: 1)
-            case collectionView.bounds.width * 2:
-                changeColors(forButton: 2)
-          default:
-              break
-          }
-      }
-    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        switch collectionView.bounds.minX {
+        case 0.0:
+            changeColors(forButton: 0)
+        case collectionView.bounds.width:
+            changeColors(forButton: 1)
+        case collectionView.bounds.width * 2:
+            changeColors(forButton: 2)
+        default:
+            break
+        }
+    }
     
     @IBAction func selectButtonsTapped(_ sender: UIButton) {
         switch sender {
@@ -140,7 +162,7 @@ class ChatsCollectionViewController: UIViewController {
     }
     
     
-  
+    
     
     func changeColors(forButton number: Int) {
         switch number  {
@@ -169,13 +191,26 @@ class ChatsCollectionViewController: UIViewController {
         }
     }
     
-    
-  
-    
     private func replaceChat(_ chat: Chat) {
         recentlyChats.removeAll { $0.id == chat.id}
         recentlyChats.append(chat)
         recentlyChats.sort()
+        collectionView.reloadData()
+    }
+    
+    private func deleteChatFromGlobal(_ chat: Chat) {
+        globalChats.removeAll { $0.id == chat.id}
+        deleteRecentlyChatFromFireStore(id: chat.id!)
+        collectionView.reloadData()
+    }
+    
+    private func deleteChatFromRecently(_ chat: Chat) {
+        recentlyChats.removeAll { $0.id == chat.id}
+        collectionView.reloadData()
+    }
+    
+    private func deleteChatFromMine(_ chat: Chat) {
+        mineChats.removeAll { $0.id == chat.id}
         collectionView.reloadData()
     }
     
@@ -198,17 +233,17 @@ class ChatsCollectionViewController: UIViewController {
     }
     
     private func addChatToMine(_ chat: Chat) {
-         guard !mineChats.contains(chat) else {
-             return
-         }
-         mineChats.append(chat)
-         mineChats.sort()
-         collectionView.reloadData()
-     }
+        guard !mineChats.contains(chat) else {
+            return
+        }
+        mineChats.append(chat)
+        mineChats.sort()
+        collectionView.reloadData()
+    }
+    
+    
     
 }
-
-
 
 extension ChatsCollectionViewController:  UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
@@ -232,30 +267,101 @@ extension ChatsCollectionViewController:  UICollectionViewDataSource, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! TableColleCollectionViewCell
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatsCollectionViewCell
         cell.handler = handler
+        cell.handler2 = showAlert
+        cell.handler3 = deleteRecentlyChatFromFireStore
+        cell.pageNumber = indexPath.row
         switch indexPath.row {
         case 0:
-            cell.setupCell(chats: globalChats )
+            if !isFiltering {cell.setupCell(chats: globalChats )}
+            else {cell.setupCell(chats: filteredChats[0])}
         case 1:
-            cell.setupCell(chats: recentlyChats)
+            if !isFiltering { cell.setupCell(chats: recentlyChats )}
+            else {cell.setupCell(chats: filteredChats[0])}
         case 2:
-            cell.setupCell(chats: mineChats)
+            if !isFiltering { cell.setupCell(chats: mineChats )}
+            else {cell.setupCell(chats: filteredChats[2])}
         default:
             break
         }
         
         return cell
     }
-
+    
     func handler(_ vc: UIViewController) {
         navigationController?.pushViewController(vc, animated: false)
     }
+    
+    
+    func callReloadWhileSearbarChangePosition() {
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            self.collectionView.reloadData()
+            timer.invalidate()
+        }
+    }
+    
 }
 
-extension ChatsCollectionViewController: UISearchResultsUpdating {
+extension ChatsCollectionViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
-        print()
+        let lowerCasedText = (searchController.searchBar.text!).lowercased()
+        filteredChats[0] = globalChats.filter {$0.name.lowercased().contains(lowerCasedText)}
+        filteredChats[1] = recentlyChats.filter {$0.name.lowercased().contains(lowerCasedText)}
+        filteredChats[2] = mineChats.filter {$0.name.lowercased().contains(lowerCasedText)}
+        collectionView.reloadData()
     }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        callReloadWhileSearbarChangePosition()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        callReloadWhileSearbarChangePosition()
+    }
+    
+    
 }
+
+extension ChatsCollectionViewController {
+    
+    func deleteRecentlyChatFromFireStore(id: String) {
+        self.db.collection("recentlyChats").document((Auth.auth().currentUser?.uid)!).collection("chats").document(id).delete { err in
+            if let err = err {
+                print("Error deleted document: \(err)")
+            } else {
+                print("Document successfully deleted!")
+            }
+        }
+    }
+    
+    
+    func showAlert(id: String, name: String) {
+        
+        let ac = UIAlertController(title: nil, message: "Are you sure you want delete \(name)? This chat will be removed from the shared store.", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        ac.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
+            self.db.collection("usersCreateChats").document((Auth.auth().currentUser?.uid)!).collection("chats").document(id).delete { err in
+                if let err = err {
+                    print("Error deleted document: \(err)")
+                } else {
+                    print("Document successfully deleted!")
+                }
+            }
+            
+            self.db.collection("chats").document(id).delete { err in
+                if let err = err {
+                    print("Error deleted document: \(err)")
+                } else {
+                    print("Document successfully deleted!")
+                }
+            }
+            
+            
+        }))
+        present(ac, animated: true, completion: nil)
+    }
+    
+    
+}
+

@@ -114,7 +114,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wup-NR-I1x" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-62.318840579710148" y="145.98214285714286"/>
+            <point key="canvasLocation" x="-1559" y="1596"/>
         </scene>
         <!--Profile-->
         <scene sceneID="13y-Le-FVL">
@@ -165,7 +165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WkK-A4-xWR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-901.44927536231887" y="864.50892857142856"/>
+            <point key="canvasLocation" x="-1558" y="865"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="p8r-tG-YOU">
@@ -181,7 +181,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MTF-My-ozt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1223" y="1596"/>
+            <point key="canvasLocation" x="-2294" y="1596"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="z1F-LC-ivh">
@@ -198,7 +198,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hA7-9C-wPi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1955" y="146"/>
+            <point key="canvasLocation" x="-1917" y="145"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="uSo-Tp-0i6">
@@ -308,7 +308,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i12-Xb-YWZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="813.04347826086962" y="147.99107142857142"/>
+            <point key="canvasLocation" x="-671" y="1596"/>
         </scene>
         <!--Chats-->
         <scene sceneID="gD6-aN-fJB">
@@ -327,7 +327,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bYN-hG-rSu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3668.115942028986" y="1595.7589285714284"/>
+            <point key="canvasLocation" x="-2293" y="865"/>
         </scene>
         <!--Chats Collection View Controller-->
         <scene sceneID="NI0-r7-Xh5">
@@ -397,7 +397,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1ZW-dl-824">
-                                <rect key="frame" x="0.0" y="44" width="423" height="764"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="681"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="v3c-Sr-llW">
                                     <size key="itemSize" width="50" height="50"/>
@@ -410,12 +410,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="1ZW-dl-824" firstAttribute="trailing" secondItem="PVd-hw-UJU" secondAttribute="trailing" constant="9" id="5aH-Xe-cJU"/>
-                            <constraint firstAttribute="bottom" secondItem="1ZW-dl-824" secondAttribute="bottom" id="BgF-i1-cwm"/>
-                            <constraint firstItem="1ZW-dl-824" firstAttribute="top" secondItem="jdi-8G-aCu" secondAttribute="bottom" id="FJf-SS-mdB"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="1ZW-dl-824" secondAttribute="bottom" id="3NN-tv-WOO"/>
+                            <constraint firstItem="1ZW-dl-824" firstAttribute="trailing" secondItem="PVd-hw-UJU" secondAttribute="trailing" id="5aH-Xe-cJU"/>
+                            <constraint firstItem="1ZW-dl-824" firstAttribute="top" secondItem="jdi-8G-aCu" secondAttribute="bottom" id="JN8-MK-HPy"/>
                             <constraint firstItem="1ZW-dl-824" firstAttribute="leading" secondItem="PVd-hw-UJU" secondAttribute="leading" id="PhH-nu-Bqi"/>
                             <constraint firstItem="jdi-8G-aCu" firstAttribute="top" secondItem="PVd-hw-UJU" secondAttribute="top" id="ayb-e4-eeF"/>
                             <constraint firstItem="jdi-8G-aCu" firstAttribute="trailing" secondItem="PVd-hw-UJU" secondAttribute="trailing" id="jDG-Uf-5u7"/>
+                            <constraint firstItem="1ZW-dl-824" firstAttribute="leading" secondItem="PVd-hw-UJU" secondAttribute="leading" id="jj8-GO-LAn"/>
                             <constraint firstItem="jdi-8G-aCu" firstAttribute="leading" secondItem="PVd-hw-UJU" secondAttribute="leading" id="t3c-FN-8vg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PVd-hw-UJU"/>
@@ -432,7 +433,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AFP-Pk-0jj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2772.4637681159425" y="1595.7589285714284"/>
+            <point key="canvasLocation" x="-3233.3333333333335" y="1595.7589285714284"/>
         </scene>
     </scenes>
     <resources>
